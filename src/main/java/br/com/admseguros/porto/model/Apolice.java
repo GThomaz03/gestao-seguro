@@ -1,6 +1,7 @@
 package br.com.admseguros.porto.model;
 
 public class Apolice {
+    private Long idApolice;
     private int numeroApolice;
     private Cliente cliente;
     private Seguro seguro;
