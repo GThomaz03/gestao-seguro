@@ -1,26 +1,30 @@
 package br.com.admseguros.porto.model;
 
+import java.util.Date;
+
 public class Seguro {
+    private Long id;
     private String tipo;
-    private double valorApolice;
-    private double premio;
+    private double valor;
+    private Date dataInicio;
+    private Date dataFim;
 
-    public Seguro(String tipo, double valorApolice) {
+    public Seguro(Long id, String tipo, double valor, Date dataInicio, Date dataFim) {
+        this.id = id;
         this.tipo = tipo;
-        this.valorApolice = valorApolice;
-        calcularPremio(); // Chamando o cálculo do prêmio na criação
+        this.valor = valor;
+        this.dataInicio = dataInicio;
+        this.dataFim = dataFim;
     }
 
-    // Método que calcula o prêmio do seguro
-    public void calcularPremio() {
-        if ("automóvel".equalsIgnoreCase(tipo)) {
-            this.premio = valorApolice * 0.05; // Exemplo de regra de cálculo
-        } else if ("vida".equalsIgnoreCase(tipo)) {
-            this.premio = valorApolice * 0.03;
-        }
+    public Long getId() {
+        return id;
     }
 
-    // Getters e Setters
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getTipo() {
         return tipo;
     }
@@ -29,15 +33,27 @@ public class Seguro {
         this.tipo = tipo;
     }
 
-    public double getValorApolice() {
-        return valorApolice;
+    public double getValor() {
+        return valor;
     }
 
-    public void setValorApolice(double valorApolice) {
-        this.valorApolice = valorApolice;
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 
-    public double getPremio() {
-        return premio;
+    public Date getDataInicio() {
+        return dataInicio;
+    }
+
+    public void setDataInicio(Date dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public Date getDataFim() {
+        return dataFim;
+    }
+
+    public void setDataFim(Date dataFim) {
+        this.dataFim = dataFim;
     }
 }

@@ -1,57 +1,62 @@
 package br.com.admseguros.porto.model;
 
+import java.util.Date;
+
 public class Pagamento {
-    private int idPagamento;
-    private Apolice apolice;
-    private double valorPago;
-    private String dataPagamento;
-    private String tipoPagamento;
+    private long id;
+    private Seguro seguro;
+    private FormaPagamento formaPagamento;
+    private Double valorPago;
+    private Date dataPagamento;
     private String statusPagamento;
 
-    public Pagamento(int idPagamento, Apolice apolice, double valorPago, String dataPagamento, String tipoPagamento, String statusPagamento) {
-        this.idPagamento = idPagamento;
-        this.apolice = apolice;
-        this.valorPago = valorPago;
-        this.dataPagamento = dataPagamento;
-        this.tipoPagamento = tipoPagamento;
+    public Pagamento(String statusPagamento, Date dataPagamento, Double valorPago, FormaPagamento formaPagamento, Seguro seguro, long id) {
         this.statusPagamento = statusPagamento;
+        this.dataPagamento = dataPagamento;
+        this.valorPago = valorPago;
+        this.formaPagamento = formaPagamento;
+        this.seguro = seguro;
+        this.id = id;
     }
 
-    // Getters e Setters
-    public int getIdPagamento() {
-        return idPagamento;
+    public long getId() {
+        return id;
     }
 
-    public void setIdPagamento(int idPagamento) {
-        this.idPagamento = idPagamento;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public Apolice getApolice() {
-        return apolice;
+    public Seguro getSeguro() {
+        return seguro;
     }
 
-    public void setApolice(Apolice apolice) {
-        this.apolice = apolice;
+    public void setSeguro(Seguro seguro) {
+        this.seguro = seguro;
     }
 
-    public double getValorPago() {
+    public FormaPagamento getFormaPagamento() {
+        return formaPagamento;
+    }
+
+    public void setFormaPagamento(FormaPagamento formaPagamento) {
+        this.formaPagamento = formaPagamento;
+    }
+
+    public Double getValorPago() {
         return valorPago;
     }
 
-    public void setValorPago(double valorPago) {
+    public void setValorPago(Double valorPago) {
         this.valorPago = valorPago;
     }
 
-    public String getDataPagamento() {
+    public Date getDataPagamento() {
         return dataPagamento;
     }
 
-    public String getTipoPagamento() {
-        return tipoPagamento;
-    }
-
-    public void setTipoPagamento(String tipoPagamento) {
-        this.tipoPagamento = tipoPagamento;
+    public void setDataPagamento(Date dataPagamento) {
+        this.dataPagamento = dataPagamento;
     }
 
     public String getStatusPagamento() {
@@ -60,9 +65,5 @@ public class Pagamento {
 
     public void setStatusPagamento(String statusPagamento) {
         this.statusPagamento = statusPagamento;
-    }
-
-    public void setDataPagamento(String dataPagamento) {
-        this.dataPagamento = dataPagamento;
     }
 }

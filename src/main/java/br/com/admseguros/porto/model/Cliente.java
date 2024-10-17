@@ -1,5 +1,6 @@
 package br.com.admseguros.porto.model;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 
@@ -8,11 +9,19 @@ public class Cliente implements ClienteInfo{
     private String nome;
     private String cpf;
     private String endereco;
-    private LocalDate dataNascimento;
+    private Date dataNascimento;
     private String telefone;
 
-    public Cliente(Long id, String nome, String cpf, String endereco, LocalDate dataNascimento, String telefone) {
+    public Cliente(Long id, String nome, String cpf, String endereco, Date dataNascimento, String telefone) {
         this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.endereco = endereco;
+        this.dataNascimento = dataNascimento;
+        this.telefone = telefone;
+    }
+
+    public Cliente(String nome, String cpf, String endereco, Date dataNascimento, String telefone) {
         this.nome = nome;
         this.cpf = cpf;
         this.endereco = endereco;
@@ -55,11 +64,11 @@ public class Cliente implements ClienteInfo{
         return endereco;
     }
 
-    public LocalDate getDataNascimento() {
+    public Date getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(LocalDate dataNascimento) {
+    public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
