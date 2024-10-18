@@ -13,7 +13,25 @@ public class Veiculo {
         this.modelo = modelo;
         this.marca = marca;
         this.ano = ano;
+        validarAno();
+        validarPlaca();
     }
+
+    // Método para validar o ano
+    private void validarAno() {
+        if (ano <= 2012) {
+            throw new IllegalArgumentException("O ano do veículo deve ser maior que 2012.");
+        }
+    }
+
+    // Método para validar a placa
+    private void validarPlaca() {
+        if (placa == null || !placa.matches("[A-Z]{3}-\\d{4}")) {
+            throw new IllegalArgumentException("A placa do veículo deve estar no formato ABC-1234.");
+        }
+    }
+
+    // Getters e Setters
 
     public Long getId() {
         return id;
@@ -53,5 +71,6 @@ public class Veiculo {
 
     public void setAno(int ano) {
         this.ano = ano;
+        validarAno();
     }
 }
