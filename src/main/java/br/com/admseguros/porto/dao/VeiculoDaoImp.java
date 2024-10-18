@@ -12,6 +12,10 @@ public class VeiculoDaoImp implements VeiculoDao {
 
         private DatabaseConfig dbc;
 
+        public VeiculoDaoImp(DatabaseConfig dbc) {
+        this.dbc = dbc;
+    }
+
         @Override
         public void create(Veiculo veiculo) throws SQLException {
             String sql = "INSERT INTO T_JAVA_VEICULO (id_veiculo, nr_placa, nm_modelo, nm_marca, nr_ano) VALUES (?,?,?,?,?)";

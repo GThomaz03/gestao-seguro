@@ -1,4 +1,4 @@
-package br.com.admseguros.porto.model;
+package br.com.admseguros.porto.service;
 
 import java.time.LocalDate;
 

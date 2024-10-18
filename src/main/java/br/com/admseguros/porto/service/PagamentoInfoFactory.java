@@ -1,4 +1,8 @@
-package br.com.admseguros.porto.model;
+package br.com.admseguros.porto.service;
+
+import br.com.admseguros.porto.model.FormaPagamento;
+import br.com.admseguros.porto.model.Pagamento;
+import br.com.admseguros.porto.model.StatusPagamento;
 
 import java.time.LocalDate;
 

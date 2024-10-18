@@ -1,8 +1,9 @@
-package br.com.admseguros.porto.model;
+package br.com.admseguros.porto.service;
 
+
+import br.com.admseguros.porto.model.Cliente;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class ClienteInfoFactory {
 

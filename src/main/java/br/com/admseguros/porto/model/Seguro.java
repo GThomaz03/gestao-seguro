@@ -1,5 +1,6 @@
 package br.com.admseguros.porto.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Seguro {
@@ -8,10 +9,10 @@ public class Seguro {
     private Long idVeiculo;
     private String tipo;
     private double valor;
-    private String  dataInicio;
-    private String  dataFim;
+    private LocalDate dataInicio;
+    private LocalDate  dataFim;
 
-    public Seguro(Long idSeguro, Long idCliente, String tipo, double valor, String dataInicio, String dataFim) {
+    public Seguro(Long idSeguro, Long idCliente, String tipo, double valor, LocalDate dataInicio, LocalDate dataFim) {
         this.idSeguro = idSeguro;
         this.idCliente = idCliente;
         this.tipo = tipo;
@@ -20,7 +21,7 @@ public class Seguro {
         this.dataFim = dataFim;
     }
 
-    public Seguro(Long idSeguro, Long idCliente, Long idVeiculo, String tipo, double valor, String dataInicio, String dataFim) {
+    public Seguro(Long idSeguro, Long idCliente, Long idVeiculo, String tipo, double valor, LocalDate dataInicio, LocalDate dataFim) {
         this.idSeguro = idSeguro;
         this.idCliente = idCliente;
         this.idVeiculo = idVeiculo;
@@ -70,19 +71,30 @@ public class Seguro {
         this.valor = valor;
     }
 
-    public String getDataInicio() {
+    public LocalDate getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(String dataInicio) {
+    public void setDataInicio(LocalDate dataInicio) {
         this.dataInicio = dataInicio;
     }
 
-    public String getDataFim() {
+    public LocalDate getDataFim() {
         return dataFim;
     }
 
-    public void setDataFim(String dataFim) {
+    public void setDataFim(LocalDate dataFim) {
         this.dataFim = dataFim;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Seguro{"+
+                "\nNúmero seguro: " + idSeguro +
+                "\nTipo seguro: " + tipo +
+                "\nData inicio: " + dataInicio +
+                "\nData fim: " + dataFim +
+                " }\n";
     }
 }

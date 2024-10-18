@@ -1,18 +1,20 @@
 package br.com.admseguros.porto.model;
 
+import br.com.admseguros.porto.service.ClienteInfo;
+
 import java.time.LocalDate;
 
 
-public class Cliente implements ClienteInfo{
-    private Long idSeguro;
+public class Cliente implements ClienteInfo {
+    private Long idCliente;
     private String nome;
     private String cpf;
     private String endereco;
     private LocalDate dataNascimento;
     private String telefone;
 
-    public Cliente(Long idSeguro, String nome, String cpf, String endereco, LocalDate dataNascimento, String telefone) {
-        this.idSeguro = idSeguro;
+    public Cliente(Long idCliente, String nome, String cpf, String endereco, LocalDate dataNascimento, String telefone) {
+        this.idCliente = idCliente;
         this.nome = nome;
         this.cpf = cpf;
         this.endereco = endereco;
@@ -36,11 +38,11 @@ public class Cliente implements ClienteInfo{
     // Getters e Setters
 
     public Long getidSeguro() {
-        return idSeguro;
+        return idCliente;
     }
 
     public void setidSeguro(Long idSeguro) {
-        this.idSeguro = idSeguro;
+        this.idCliente = idCliente;
     }
 
     public String getNome() {
@@ -90,5 +92,14 @@ public class Cliente implements ClienteInfo{
             return cpf.substring(cpf.length() - 3);
         }
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente {" +
+                "Nome:" + nome +
+                "\nCpf:" + cpf +
+                "\nTelefone: " + telefone +
+                "}\n";
     }
 }

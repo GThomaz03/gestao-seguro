@@ -1,7 +1,8 @@
 package br.com.admseguros.porto.model;
 
+import br.com.admseguros.porto.service.Pagamentoinfo;
+
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Pagamento implements Pagamentoinfo {
     private Long id;

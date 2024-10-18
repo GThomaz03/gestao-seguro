@@ -11,18 +11,21 @@ import java.util.List;
 public class SeguroDaoImp implements SeguroDao{
 
     private DatabaseConfig dbc;
+    public SeguroDaoImp(DatabaseConfig dbc) {
+        this.dbc = dbc;
+    }
 
     @Override
     public void createSeguroVida(Seguro seguro) throws SQLException {
-        String sql = "INSERT INTO T_JAVA_SEGURO (id_seguro, id_cliente, tp_seguro, vr_seguro, dt_inicio, dt_fim, ) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO T_JAVA_SEGURO (ID_SEGURO, ID_CLIENTE, TP_SEGURO, VR_SEGURO, DT_INICIO, DT_FIM ) VALUES (?,?,?,?,?,?)";
 
         try {
             Connection connection = dbc.getConnection();
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setLong(1, seguro.getIdSeguro());
             pstmt.setLong(2, seguro.getIdCliente());
-            pstmt.setDouble(3, seguro.getValor());
-            pstmt.setString(4, seguro.getTipo());
+            pstmt.setDouble(4, seguro.getValor());
+            pstmt.setString(3, seguro.getTipo());
             pstmt.setDate(5, java.sql.Date.valueOf(seguro.getDataInicio()));
             pstmt.setDate(6, java.sql.Date.valueOf(seguro.getDataFim()));
             pstmt.executeUpdate();
@@ -32,7 +35,7 @@ public class SeguroDaoImp implements SeguroDao{
 
     @Override
     public void createSeguroVeiculo(Seguro seguro) throws SQLException {
-        String sql = "INSERT INTO T_JAVA_SEGURO (id_seguro, id_cliente, idVeiculo, tp_seguro, vr_seguro, dt_inicio, dt_fim, ) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO T_JAVA_SEGURO (id_seguro, id_cliente, id_Veiculo, tp_seguro, vr_seguro, dt_inicio, dt_fim, ) VALUES (?,?,?,?,?,?,?)";
 
         try {
             Connection connection = dbc.getConnection();
@@ -53,38 +56,24 @@ public class SeguroDaoImp implements SeguroDao{
     public List<Seguro> read() {
         List<Seguro> result = new ArrayList<>();
         String sql = "SELECT * FROM T_JAVA_SEGURO";
-
         try{
-            //1- Executar o querry select *
             Connection connection = dbc.getConnection();
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
 
-            //2- mapear linhas para objetos
             while (rs.next()) {
-                Long idSeguro = rs.getLong("id");
-                Long idCliente = rs.getLong("idCliente");
-                Long idVeiculo = rs.getLong("idVeiculo");
-                String tpSeguro = rs.getString("tpSeguro");
-                Double vrSeguro = rs.getDouble("vrSeguro");
+                Long idSeguro = rs.getLong("ID_SEGURO");
+                Long idCliente = rs.getLong("ID_CLIENTE");
+                Long idVeiculo = rs.getLong("ID_VEICULO");
+                String tpSeguro = rs.getString("TP_SEGURO");
+                double vrSeguro = rs.getDouble("VR_SEGURO");
+                Date dtInicio = rs.getDate("DT_INICIO");
+                Date dtFim = rs.getDate("DT_FIM");
 
-                // Obter as datas como java.sql.Date
-                Date dtInicio = rs.getDate("dtInicio");
-                Date dtFim = rs.getDate("dtFim");
-
-                // Definir o formato desejado
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // ou o formato que você preferir
-
-                // Converter as datas para String
-                String dtInicioStr = dtInicio != null ? sdf.format(dtInicio) : null; // Verifica se dtInicio não é nulo
-                String dtFimStr = dtFim != null ? sdf.format(dtFim) : null; // Verifica se dtFim não é nulo
-
-                result.add(new Seguro(idSeguro, idCliente, idVeiculo, tpSeguro, vrSeguro, dtInicioStr, dtFimStr));
+                result.add(new Seguro(idSeguro, idCliente, idVeiculo, tpSeguro, vrSeguro, dtInicio.toLocalDate(), dtFim.toLocalDate()));
             }
-
         } catch (SQLException e){
         }
-
         return result;
     }
 

@@ -1,4 +1,6 @@
-package br.com.admseguros.porto.model;
+package br.com.admseguros.porto.service;
+
+import br.com.admseguros.porto.model.Apolice;
 
 import java.time.LocalDate;
 

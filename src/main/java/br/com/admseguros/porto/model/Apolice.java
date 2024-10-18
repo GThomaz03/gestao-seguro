@@ -1,5 +1,7 @@
 package br.com.admseguros.porto.model;
 
+import br.com.admseguros.porto.service.ApoliceInfo;
+
 import java.time.LocalDate;
 
 public class Apolice implements ApoliceInfo {

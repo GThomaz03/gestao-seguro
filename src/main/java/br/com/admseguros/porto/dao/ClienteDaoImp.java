@@ -11,11 +11,6 @@ import java.util.List;
 public class ClienteDaoImp implements ClienteDao{
 
     private DatabaseConfig dbc;
-
-    public void ClienteDaoImplementada(DatabaseConfig dbc) {
-        this.dbc = dbc;
-    }
-
     public ClienteDaoImp(DatabaseConfig dbc) {
         this.dbc = dbc;
     }
@@ -24,7 +19,7 @@ public class ClienteDaoImp implements ClienteDao{
     //TODO: Refatorar na próxima aula
     @Override
     public void create(Cliente cliente) {
-        String sql = "INSERT INTO T_JAVA_CLIENTE(NM_CLIENTE, NR_CPF, DS_ENDERECO, DT_NASCIMENTO, NR_TELEFONE) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO T_JAVA_CLIENTE (NM_CLIENTE, NR_CPF, DS_ENDERECO, DT_NASCIMENTO, NR_TELEFONE)  VALUES (?, ?, ?, ?, ?)";
         try{
             Connection connection = dbc.getConnection();
             PreparedStatement pstmt = connection.prepareStatement(sql);
@@ -51,18 +46,17 @@ public class ClienteDaoImp implements ClienteDao{
 
             //2- mapear linhas para objetos
             while(rs.next()){
-                Long id = rs.getLong("id");
-                String nome = rs.getString("nome");
-                String cpf = rs.getString("cpf");
-                String endereco = rs.getString("endereco");
-                Date dataNascimento = rs.getDate("dataNascimento");
-                String telefone = rs.getString("telefone");
-                result.add(new Cliente(id, nome, cpf, endereco, ((java.sql.Date) dataNascimento).toLocalDate(), telefone));
-            }
+                Long id = rs.getLong("id_CLIENTE");
+                String nome = rs.getString("NM_CLIENTE");
+                String cpf = rs.getString("NR_CPF");
+                String endereco = rs.getString("DS_ENDERECO");
+                Date dataNascimento = rs.getDate("DT_NASCIMENTO");
+                String telefone = rs.getString("NR_TELEFONE");
 
+                result.add(new Cliente (id, nome, cpf, endereco, ((java.sql.Date) dataNascimento).toLocalDate(), telefone));
+            }
         } catch (SQLException e){
         }
-
         return result;
     }
 
