@@ -3,26 +3,55 @@ package br.com.admseguros.porto.model;
 import java.util.Date;
 
 public class Seguro {
-    private Long id;
+    private Long idSeguro;
+    private Long idCliente;
+    private Long idVeiculo;
     private String tipo;
     private double valor;
-    private Date dataInicio;
-    private Date dataFim;
+    private String  dataInicio;
+    private String  dataFim;
 
-    public Seguro(Long id, String tipo, double valor, Date dataInicio, Date dataFim) {
-        this.id = id;
+    public Seguro(Long idSeguro, Long idCliente, String tipo, double valor, String dataInicio, String dataFim) {
+        this.idSeguro = idSeguro;
+        this.idCliente = idCliente;
         this.tipo = tipo;
         this.valor = valor;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
     }
 
-    public Long getId() {
-        return id;
+    public Seguro(Long idSeguro, Long idCliente, Long idVeiculo, String tipo, double valor, String dataInicio, String dataFim) {
+        this.idSeguro = idSeguro;
+        this.idCliente = idCliente;
+        this.idVeiculo = idVeiculo;
+        this.tipo = tipo;
+        this.valor = valor;
+        this.dataInicio = dataInicio;
+        this.dataFim = dataFim;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getIdSeguro() {
+        return idSeguro;
+    }
+
+    public void setIdSeguro(Long idSeguro) {
+        this.idSeguro = idSeguro;
+    }
+
+    public Long getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(Long idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public Long getIdVeiculo() {
+        return idVeiculo;
+    }
+
+    public void setIdVeiculo(Long idVeiculo) {
+        this.idVeiculo = idVeiculo;
     }
 
     public String getTipo() {
@@ -41,19 +70,19 @@ public class Seguro {
         this.valor = valor;
     }
 
-    public Date getDataInicio() {
+    public String getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(Date dataInicio) {
+    public void setDataInicio(String dataInicio) {
         this.dataInicio = dataInicio;
     }
 
-    public Date getDataFim() {
+    public String getDataFim() {
         return dataFim;
     }
 
-    public void setDataFim(Date dataFim) {
+    public void setDataFim(String dataFim) {
         this.dataFim = dataFim;
     }
 }

@@ -1,47 +1,50 @@
 package br.com.admseguros.porto.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
-public class Pagamento {
-    private long id;
-    private Seguro seguro;
+public class Pagamento implements Pagamentoinfo {
+    private Long id;
+    private Long idSeguro;
     private FormaPagamento formaPagamento;
     private Double valorPago;
-    private Date dataPagamento;
-    private String statusPagamento;
+    private LocalDate dataPagamento;
+    private StatusPagamento statusPagamento;
 
-    public Pagamento(String statusPagamento, Date dataPagamento, Double valorPago, FormaPagamento formaPagamento, Seguro seguro, long id) {
+    public Pagamento(StatusPagamento statusPagamento, LocalDate  dataPagamento, Double valorPago, FormaPagamento formaPagamento, Long idSeguro, long id) {
         this.statusPagamento = statusPagamento;
         this.dataPagamento = dataPagamento;
         this.valorPago = valorPago;
         this.formaPagamento = formaPagamento;
-        this.seguro = seguro;
+        this.idSeguro = idSeguro;
         this.id = id;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Seguro getSeguro() {
-        return seguro;
+    public Long getIdSeguro() {
+        return idSeguro;
     }
 
-    public void setSeguro(Seguro seguro) {
-        this.seguro = seguro;
+    public void setIdSeguro(Long idSeguro) {
+        this.idSeguro = idSeguro;
     }
 
-    public FormaPagamento getFormaPagamento() {
-        return formaPagamento;
+    public String  getFormaPagamento() {
+        String pagamento = String.valueOf(formaPagamento);
+        return pagamento;
     }
 
     public void setFormaPagamento(FormaPagamento formaPagamento) {
         this.formaPagamento = formaPagamento;
     }
+
 
     public Double getValorPago() {
         return valorPago;
@@ -51,19 +54,20 @@ public class Pagamento {
         this.valorPago = valorPago;
     }
 
-    public Date getDataPagamento() {
+    public LocalDate  getDataPagamento() {
         return dataPagamento;
     }
 
-    public void setDataPagamento(Date dataPagamento) {
+    public void setDataPagamento(LocalDate  dataPagamento) {
         this.dataPagamento = dataPagamento;
     }
 
     public String getStatusPagamento() {
-        return statusPagamento;
+        String pagamento = String.valueOf(statusPagamento);
+        return pagamento;
     }
 
-    public void setStatusPagamento(String statusPagamento) {
+    public void setStatusPagamento(StatusPagamento statusPagamento) {
         this.statusPagamento = statusPagamento;
     }
 }

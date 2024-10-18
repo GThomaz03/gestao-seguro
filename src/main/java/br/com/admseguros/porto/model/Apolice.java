@@ -1,18 +1,18 @@
 package br.com.admseguros.porto.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-public class Apolice {
+public class Apolice implements ApoliceInfo {
     private Long idApolice;
-    private Seguro seguro;
+    private Long idSeguro;
     private int numeroApolice;
     private String descricaoApolice;
-    private Date dataEmissaoApolice;
+    private LocalDate dataEmissaoApolice;
 
 
-    public Apolice(Long idApolice, Seguro seguro, int numeroApolice, String descricaoApolice, Date dataEmissaoApolice) {
+    public Apolice(Long idApolice, Long idSeguro, int numeroApolice, String descricaoApolice, LocalDate dataEmissaoApolice) {
         this.idApolice = idApolice;
-        this.seguro = seguro;
+        this.idApolice = idSeguro;
         this.numeroApolice = numeroApolice;
         this.descricaoApolice = descricaoApolice;
         this.dataEmissaoApolice = dataEmissaoApolice;
@@ -26,12 +26,12 @@ public class Apolice {
         this.idApolice = idApolice;
     }
 
-    public Seguro getSeguro() {
-        return seguro;
+    public Long getIdSeguro() {
+        return idSeguro;
     }
 
-    public void setSeguro(Seguro seguro) {
-        this.seguro = seguro;
+    public void setIdSeguro(Long idSeguro) {
+        this.idSeguro = idSeguro;
     }
 
     public int getNumeroApolice() {
@@ -50,11 +50,11 @@ public class Apolice {
         this.descricaoApolice = descricaoApolice;
     }
 
-    public Date getDataEmissaoApolice() {
+    public LocalDate getDataEmissaoApolice() {
         return dataEmissaoApolice;
     }
 
-    public void setDataEmissaoApolice(Date dataEmissaoApolice) {
+    public void setDataEmissaoApolice(LocalDate  dataEmissaoApolice) {
         this.dataEmissaoApolice = dataEmissaoApolice;
     }
 }

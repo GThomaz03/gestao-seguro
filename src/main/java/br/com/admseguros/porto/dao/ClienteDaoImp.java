@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ClienteDaoImpl implements ClienteDao{
+public class ClienteDaoImp implements ClienteDao{
 
     private DatabaseConfig dbc;
 
@@ -16,7 +16,7 @@ public class ClienteDaoImpl implements ClienteDao{
         this.dbc = dbc;
     }
 
-    public ClienteDaoImpl(DatabaseConfig dbc) {
+    public ClienteDaoImp(DatabaseConfig dbc) {
         this.dbc = dbc;
     }
 
@@ -31,7 +31,7 @@ public class ClienteDaoImpl implements ClienteDao{
             pstmt.setString(1, cliente.getNome());
             pstmt.setString(2, cliente.getCpf());
             pstmt.setString(3, cliente.getEndereco());
-            pstmt.setDate(4, cliente.getDataNascimento());
+            pstmt.setDate(4, java.sql.Date.valueOf(cliente.getDataNascimento()));
             pstmt.setString(5, cliente.getTelefone());
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -57,7 +57,7 @@ public class ClienteDaoImpl implements ClienteDao{
                 String endereco = rs.getString("endereco");
                 Date dataNascimento = rs.getDate("dataNascimento");
                 String telefone = rs.getString("telefone");
-                result.add(new Cliente(id, nome, cpf, endereco, (java.sql.Date) dataNascimento, telefone));
+                result.add(new Cliente(id, nome, cpf, endereco, ((java.sql.Date) dataNascimento).toLocalDate(), telefone));
             }
 
         } catch (SQLException e){
@@ -75,7 +75,7 @@ public class ClienteDaoImpl implements ClienteDao{
             pstmt.setString(1, Cliente.getNome());
             pstmt.setString(2, Cliente.getEndereco());
             pstmt.setString(3, Cliente.getTelefone());
-            pstmt.setLong(4, Cliente.getId());
+            pstmt.setLong(4, Cliente.getidSeguro());
 
             pstmt.executeUpdate();
         }catch (SQLException e){

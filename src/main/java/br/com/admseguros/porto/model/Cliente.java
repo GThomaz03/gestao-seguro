@@ -1,19 +1,18 @@
 package br.com.admseguros.porto.model;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 
 public class Cliente implements ClienteInfo{
-    private Long id;
+    private Long idSeguro;
     private String nome;
     private String cpf;
     private String endereco;
-    private Date dataNascimento;
+    private LocalDate dataNascimento;
     private String telefone;
 
-    public Cliente(Long id, String nome, String cpf, String endereco, Date dataNascimento, String telefone) {
-        this.id = id;
+    public Cliente(Long idSeguro, String nome, String cpf, String endereco, LocalDate dataNascimento, String telefone) {
+        this.idSeguro = idSeguro;
         this.nome = nome;
         this.cpf = cpf;
         this.endereco = endereco;
@@ -21,7 +20,7 @@ public class Cliente implements ClienteInfo{
         this.telefone = telefone;
     }
 
-    public Cliente(String nome, String cpf, String endereco, Date dataNascimento, String telefone) {
+    public Cliente(String nome, String cpf, String endereco, LocalDate dataNascimento, String telefone) {
         this.nome = nome;
         this.cpf = cpf;
         this.endereco = endereco;
@@ -36,12 +35,12 @@ public class Cliente implements ClienteInfo{
 
     // Getters e Setters
 
-    public Long getId() {
-        return id;
+    public Long getidSeguro() {
+        return idSeguro;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setidSeguro(Long idSeguro) {
+        this.idSeguro = idSeguro;
     }
 
     public String getNome() {
@@ -64,11 +63,11 @@ public class Cliente implements ClienteInfo{
         return endereco;
     }
 
-    public Date getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
