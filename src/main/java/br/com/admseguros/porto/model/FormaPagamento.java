@@ -1,10 +1,20 @@
 package br.com.admseguros.porto.model;
 
 public enum FormaPagamento {
-    DEBITO,
-    CREDITO,
-    BOLETO,
-    PIX;
+    DEBITO("Débito"),
+    CREDITO("Crédito"),
+    BOLETO("Boleto"),
+    PIX("Pix");
+
+    private final String descricao;
+
+    FormaPagamento(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
 
     public static FormaPagamento fromString(String formaPagamento) {
         try {
@@ -15,5 +25,3 @@ public enum FormaPagamento {
         }
     }
 }
-
-
